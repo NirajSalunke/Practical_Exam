@@ -29,8 +29,11 @@ The repository is divided into three branches for easy navigation and management
 
 ### DSL Branch
 
+<!-- https://github.com/NirajSalunke/Practical_Exam.git -->
+
 - **Branch Name**: `DSL`
-- **Navigate**: To switch to this branch, use:
+- **Direct Link**: [DSL Branch](https://github.com/NirajSalunke/Practical_Exam/tree/DSL)
+- **Navigate**: To switch to this branch locally, use:
   ```bash
   git checkout DSL
   ```
@@ -38,7 +41,8 @@ The repository is divided into three branches for easy navigation and management
 ### OOP Branch
 
 - **Branch Name**: `OOP`
-- **Navigate**: To switch to this branch, use:
+- **Direct Link**: [OOP Branch](https://github.com/NirajSalunke/Practical_Exam/tree/OOP)
+- **Navigate**: To switch to this branch locally, use:
   ```bash
   git checkout OOP
   ```
@@ -46,7 +50,8 @@ The repository is divided into three branches for easy navigation and management
 ### CG Branch
 
 - **Branch Name**: `CG`
-- **Navigate**: To switch to this branch, use:
+- **Direct Link**: [CG Branch](https://github.com/NirajSalunke/Practical_Exam/tree/CG)
+- **Navigate**: To switch to this branch locally, use:
   ```bash
   git checkout CG
   ```
@@ -62,7 +67,7 @@ To begin working with this repository, you’ll need to clone it and navigate be
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/your-repository-name.git
+git clone https://github.com/NirajSalunke/Practical_Exam.git
 cd your-repository-name
 ```
 
