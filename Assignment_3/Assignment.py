@@ -39,14 +39,16 @@ class Matrix:
         self.Mat = []
         self.rows = int(input("Enter number of rows:- "))
         self.cols = int(input("Enter number of cols:- "))
-        subList = []
-        for i in range(self.cols):
-            subList.append(0)
+
         for j in range(self.rows):
+            subList = []
+            for i in range(self.cols):
+                subList.append(0)
             self.Mat.append(subList)
         for k in range(len(self.Mat)):
             for i in range(len(self.Mat[0])):
-                self.Mat[k][i] = int(input(f"Entry for {k+1}{i+1}:- "))
+                print(self.Mat)
+                self.Mat[k][i] += int(input(f"Entry for {k+1}{i+1}:- "))
 
     def initMat(self):
         self.Mat = []
@@ -57,8 +59,15 @@ class Matrix:
             self.Mat.append(subList)
 
     def Transpose(self):
-
+        print(self.Mat)
+        for i in range(len(self.Mat)):
+            for j in range(i + 1, len(self.Mat[0])):
+                temp = self.Mat[i][j]
+                self.Mat[i][j] = self.Mat[j][i]
+                self.Mat[j][i] = temp
         return self.Mat
+    def Multi(self,B:Matrix):
+        
 
 
 A = Matrix(0, 0)
@@ -81,6 +90,7 @@ while True:
         break
     elif choice == 1:
         A.enterMat()
+        # print(A.Mat)
     elif choice == 2:
         B.enterMat()
     elif choice == 3:
