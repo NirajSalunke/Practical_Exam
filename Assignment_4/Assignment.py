@@ -12,8 +12,25 @@ class SearchBy:
     def Linear(self, studentRoll):
         for i in range(len(self.studentArray)):
             if self.studentArray[i] == studentRoll:
-                return "Student was Present in Training Program"
+                return f"Student was Present in Training Program at {i+1}."
         return "Student was absent in Training Program"
+
+    def Sentinel(self, studentRoll):
+        self.studentArray.append(studentRoll)
+        i = 0
+        while self.studentArray[i] != studentRoll:
+            i += 1
+        self.studentArray.pop()
+        if i < len(self.studentArray):
+            return f"Student was Present in Training Program at {i+1}."
+        else:
+            return "Student was absent in Training Program"
+
+    def Binary(self, studentRoll):
+        print("Binary")
+
+    def Fibonacci(self, studentRoll):
+        print("Fibonacci")
 
 
 SearchByMethod = SearchBy([])
@@ -36,7 +53,9 @@ while True:
         print(SearchByMethod.Linear(rollNo))
 
     elif choice == 2:
-        print("Sentinel")
+        rollNo = int(input("Enter the roll n.o to be Searched:- "))
+        print(SearchByMethod.Sentinel(rollNo))
+
     elif choice == 3:
         print("Binary")
     elif choice == 4:
