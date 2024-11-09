@@ -52,22 +52,36 @@ class Matrix:
 
     def initMat(self):
         self.Mat = []
-        subList = []
-        for i in range(self.cols):
-            subList.append(0)
         for j in range(self.rows):
+            subList = []
+            for i in range(self.cols):
+                subList.append(0)
             self.Mat.append(subList)
 
     def Transpose(self):
-        print(self.Mat)
-        for i in range(len(self.Mat)):
-            for j in range(i + 1, len(self.Mat[0])):
-                temp = self.Mat[i][j]
-                self.Mat[i][j] = self.Mat[j][i]
-                self.Mat[j][i] = temp
-        return self.Mat
-    def Multi(self,B:Matrix):
-        
+        if self.rows == self.cols:
+            for i in range(len(self.Mat)):
+                for j in range(i + 1, len(self.Mat[0])):
+                    temp = self.Mat[i][j]
+                    self.Mat[i][j] = self.Mat[j][i]
+                    self.Mat[j][i] = temp
+            return self.Mat
+        return "Tranpose possible on Square Matrices only!, Try diff Matrix"
+
+    def Multi(self, B):
+        if self.rows == B.cols:
+            C = Matrix(len(self.Mat), len(self.Mat[0]))
+            C.initMat()
+            for l in range(len(self.Mat)):
+                for k in range(len(B.Mat[0])):
+                    i = 0
+                    j = 0
+                    while i < len(self.Mat[0]) and j < len(B.Mat):
+                        C.Mat[l][k] += self.Mat[l][i] * B.Mat[j][k]
+                        i += 1
+                        j += 1
+        else:
+            return "Multiplication not Possible"
 
 
 A = Matrix(0, 0)
@@ -90,38 +104,75 @@ while True:
         break
     elif choice == 1:
         A.enterMat()
-        # print(A.Mat)
     elif choice == 2:
         B.enterMat()
     elif choice == 3:
-        if type(A.Add(B)) == list:
-            print(f" Addition of Given Matrices are:  {A.Add(B)}")
+        response = A.Add(B)
+        if type(response) == list:
+            print(f"Multiplication of given matrices are:- {response} ")
         else:
-            print(A.Add(B))
+            print(response)
     elif choice == 4:
-        print("1. Perform A - B")
-        print("2. Perform B - A")
-        choiceSub = int(input("Enter Choice:- "))
-        if choiceSub == 1:
-            if type(A.Sub(B)) == list:
-                print(f" Subtraction of Given Matrices are: A - B ={A.Sub(B)}")
-            else:
-                print(A.Sub(B))
-        elif choiceSub == 2:
-            if type(B.Sub(A)) == list:
-                print(f" Subtraction of Given Matrices are: B - A ={B.Sub(A)}")
-            else:
-                print(B.Sub(A))
-
+        while True:
+            print("1. Perform A - B")
+            print("2. Perform B - A")
+            print("3. Back to Menu")
+            choiceSub = int(input("Enter Choice:- "))
+            if choiceSub == 3:
+                break
+            elif choiceSub == 1:
+                response = A.Sub(B)
+                if type(response) == list:
+                    print(f"Multiplication of given matrices are:- {response} ")
+                else:
+                    print(response)
+            elif choiceSub == 2:
+                iresponse = B.Sub(A)
+                if type(response) == list:
+                    print(f"Multiplication of given matrices are:- {response} ")
+                else:
+                    print(response)
     elif choice == 5:
-        print("5")
+        while True:
+            print("1. Perform A*B ")
+            print("2. Perform B*A ")
+            print("3. Back to Menu")
+            choiceSub2 = int(input("Enter valid Choice:- "))
+            if choiceSub2 == 3:
+                break
+            elif choiceSub2 == 1:
+                response = A.Multi(B)
+                if type(response) == list:
+                    print(f"Multiplication of given matrices are:- {response} ")
+                else:
+                    print(response)
+            elif choiceSub2 == 2:
+                response = B.Multi(A)
+                if type(response) == list:
+                    print(f"Multiplication of given matrices are:- {response} ")
+                else:
+                    print(response)
+            else:
+                print("Invalid Option Try Again!")
     elif choice == 6:
-        print("1. Transpose of Matrix A")
-        print("1. Transpose of Matrix B")
-        choiceSub1 = int(input("Enter choice"))
-        if choiceSub1 == 1:
-            print(f"Transpose of the Matrix is:- {A.Transpose()} ")
-        elif choiceSub1 == 2:
-            print(f"Transpose of the Matrix is:- {B.Transpose()} ")
-        else:
-            print("Invalid Option, Try again!")
+        while True:
+            print("1. Transpose of Matrix A")
+            print("2. Transpose of Matrix B")
+            print("3. Back to Menu")
+            choiceSub1 = int(input("Enter choice"))
+            if choiceSub1 == 3:
+                break
+            elif choiceSub1 == 1:
+                response = A.Transpose()
+                if type(response) == list:
+                    print(f"Transpose of given matrice is:- {response} ")
+                else:
+                    print(response)
+            elif choiceSub1 == 2:
+                response = B.Transpose()
+                if type(response) == list:
+                    print(f"Transpose of given matrice is:- {response} ")
+                else:
+                    print(response)
+            else:
+                print("Invalid Option, Try again!")
